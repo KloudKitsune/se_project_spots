@@ -11,3 +11,9 @@
   justify-content: center;
   grid-template-columns: repeat(auto-fit, 413px);
 }
+
+@media screen and (max-width: 627px) {
+  .cards__list {
+    grid-template-columns: repeat(auto-fit, 288px);
+  }
+}
