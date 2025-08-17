@@ -76,6 +76,8 @@
   margin-left: auto;
   margin-top: auto;
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 149px;
   height: 52px;
   opacity: 1;
