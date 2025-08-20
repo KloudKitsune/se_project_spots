@@ -1,7 +1,3 @@
-/* .card {
-  width: 413px;
-} */
-
 .card__image {
   height: 413px;
   width: 100%;
@@ -38,6 +34,7 @@
 
 .card__like-btn:hover {
   opacity: 1;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 627px) {
