@@ -16,20 +16,18 @@
   flex-direction: column;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
-  font-style: Medium;
   font-size: 16px;
   line-height: 1;
-  letter-spacing: 0%;
+  letter-spacing: 0px;
 }
 
 .profile__name {
   margin: 0 0 12px;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
-  font-style: Medium;
   font-size: 32px;
   line-height: 1;
-  letter-spacing: 0%;
+  letter-spacing: 0px;
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -42,10 +40,9 @@
   margin: 0;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
-  font-style: Medium;
   font-size: 16px;
   line-height: 1;
-  letter-spacing: 0%;
+  letter-spacing: 0px;
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -59,10 +56,9 @@
   margin-top: auto;
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
-  font-style: Medium;
   font-size: 16px;
   line-height: 1;
-  letter-spacing: 0%;
+  letter-spacing: 0px;
   background-color: transparent;
   border: none;
   display: flex;
@@ -77,6 +73,7 @@
 }
 
 .profile__add-btn {
+  border: none;
   background-color: #212121;
   color: #fff;
   margin-left: auto;
@@ -116,24 +113,16 @@
     font-size: 20px;
     margin-bottom: 6px;
     max-width: 288px;
-    font-family: "Poppins", Arial, Helvetica, sans-serif;
     font-weight: 500;
     font-style: Medium;
     font-size: 20px;
     line-height: 1;
-    letter-spacing: 0%;
+    letter-spacing: 0px;
   }
 
   .profile__description {
     margin-bottom: 32px;
     max-width: 288px;
-    font-family: "Poppins", Arial, Helvetica, sans-serif;
-    font-weight: 500;
-    font-style: Medium;
-    font-size: 16px;
-    line-height: 1;
-    letter-spacing: 0%;
-    opacity: 0.7;
   }
 
   .profile__column {
