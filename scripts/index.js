@@ -42,7 +42,7 @@ newPostCloseBtn.addEventListener("click", function () {
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
   console.log("Image URL:", newPostImageInput.value);
-  console.log("Caption:", newPostCaptionInput);
+  console.log("Caption:", newPostCaptionInput.value);
   newPostModal.classList.remove("modal_is-opened"); // New post function
 }
 
