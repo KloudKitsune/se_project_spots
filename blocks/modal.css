@@ -9,10 +9,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  transition: visibility 0s linear 0.5s, opacity 0.5s linear;
 }
 
 .modal_is-opened {
   visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
 }
 
 .modal__container {
@@ -37,6 +41,7 @@
   border: none;
   background-color: transparent;
   opacity: 0.4;
+  cursor: pointer;
 }
 
 .modal__title {
@@ -103,6 +108,7 @@
   padding-left: 32px;
   gap: 8px;
   opacity: 1;
+  cursor: pointer;
 
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
