@@ -98,6 +98,7 @@ function handleEditProfileSubmit(evt) {
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 newPostForm.addEventListener("submit", handleAddCardSubmit); // new post event listener
 
-initialCards.forEach(fuction (item) {
-  console.log(item.name, item.link);
-})
+initialCards.forEach(function (item) {
+  console.log(item.name);
+  console.log(item.link);
+});
