@@ -61,7 +61,7 @@ const newPostCaptionInput = document.querySelector("#card-caption-input"); //car
 const previewModal = document.querySelector("#preview-modal"); // priview modal
 const previewModalCloseBtn = previewModal.querySelector(".modal__close-btn");
 const previewImageEl = previewModal.querySelector(".modal__image_preview");
-const PreviewCaption = previewModal.querySelector(".modal__caption");
+const previewCaption = previewModal.querySelector(".modal__caption");
 
 const cardTemplate = document
   .querySelector("#card-template")
@@ -91,8 +91,7 @@ function getCardElement(data) {
   cardImageEl.addEventListener("click", () => {
     previewImageEl.src = data.link;
     previewImageEl.alt = data.name;
-    PreviewCaption.textContent = data.name;
-    // TODO set other prop values
+    previewCaption.textContent = data.name;
     openModal(previewModal);
   });
 

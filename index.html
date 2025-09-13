@@ -43,7 +43,7 @@
                 <div class="card__content">
                   <h2 class="card__title"></h2>
                   <button
-                    aria-label="button"
+                    aria-label="like button"
                     type="button"
                     class="card__like-btn"
                   ></button>
@@ -68,6 +68,7 @@
                 type="text"
                 class="modal__input"
                 placeholder="Type your name"
+                required
               />
             </label>
 
@@ -78,6 +79,7 @@
                 type="text"
                 class="modal__input"
                 placeholder="Describe yourself"
+                required
               />
             </label>
             <button type="submit" class="modal__submit-btn">Save</button>
@@ -97,6 +99,7 @@
                 type="url"
                 class="modal__input"
                 placeholder="Paste a link to a picture"
+                required
               />
             </label>
 
@@ -107,6 +110,7 @@
                 type="text"
                 class="modal__input"
                 placeholder="Type your caption"
+                required
               />
             </label>
             <button type="submit" class="modal__submit-btn">Save</button>
@@ -121,7 +125,7 @@
             class="modal__close-btn modal__close_type_preview"
             aria-label="Close modal"
           ></button>
-          <img src="#" alt="" class="modal__image_preview" />
+          <img src="#" alt="" class="modal__image modal__image_preview" />
           <p class="modal__caption"></p>
         </div>
       </div>
