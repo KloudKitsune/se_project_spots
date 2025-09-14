@@ -30,6 +30,7 @@
   background-color: #fff;
   padding: 32px 50px;
   position: relative;
+  box-sizing: border-box;
 }
 
 .modal__image-container {
@@ -99,18 +100,16 @@
 }
 
 .modal__caption {
-  top: 750px;
-  left: 223px;
-  width: 214px;
-  min-height: 32px;
+  margin: 0;
+  top: calc(100% + 10px);
+  left: 0;
+  position: absolute;
 
   border-radius: 8px;
   opacity: 1;
   padding: 4px 8px;
   background-color: #212121;
   color: #fff;
-  align-content: center;
-  text-align: center;
 
   font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
@@ -118,6 +117,10 @@
   font-size: 20px;
   line-height: 120%;
   letter-spacing: 0%;
+
+  /* text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden; */
 }
 
 .modal__form {
@@ -203,6 +206,8 @@
   }
 
   .modal__submit-btn {
+    top: 12px;
+    right: 12px;
     width: 100%;
     max-width: none;
   }
@@ -214,5 +219,9 @@
 
   .modal__image_preview {
     max-width: unset;
+  }
+
+  .modal__caption {
+    font-size: 16px;
   }
 }
