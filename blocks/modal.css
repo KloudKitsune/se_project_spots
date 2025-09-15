@@ -206,10 +206,13 @@
   }
 
   .modal__submit-btn {
-    top: 12px;
-    right: 12px;
     width: 100%;
     max-width: none;
+  }
+
+  .modal__close-btn {
+    top: 12px;
+    right: 12px;
   }
 
   .modal__close_type_preview {
