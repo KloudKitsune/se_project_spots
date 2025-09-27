@@ -35,6 +35,7 @@ const initialCards = [
   },
 ];
 
+//Profile Elements
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
@@ -51,6 +52,7 @@ const newPostBtn = document.querySelector(".profile__add-btn");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
 const newPostForm = newPostModal.querySelector(".modal__form"); //new post modal form
+const cardSubmitBtn = newPostModal.querySelector(".modal__submit-btn");
 
 const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
@@ -98,18 +100,48 @@ function getCardElement(data) {
   return cardElement;
 }
 
+// Close modal when clicking on the overlay
+const allModals = document.querySelectorAll(".modal");
+
+allModals.forEach((modal) => {
+  modal.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("modal")) {
+      closeModal(modal);
+    }
+  });
+});
+
+// Close modal when pressing the ESC key
+function handleEscClose(evt) {
+  if (evt.key === "Escape") {
+    const openModal = document.querySelector(".modal.modal_is-opened");
+    if (openModal) {
+      closeModal(openModal);
+      document.removeEventListener("keydown", handleEscClose);
+    }
+  }
+}
+
 //function for opening and closing modals
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
+  document.addEventListener("keydown", handleEscClose);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
+  document.addEventListener("keydown", handleEscClose);
 }
 
 editProfileBtn.addEventListener("click", function () {
   editProfileNameInput.value = profileNameEl.textContent;
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
+
+  // Optional reset of validation for Edit Profile line 41 on validation.js
+  resetValidation(editProfileForm, [
+    editProfileNameInput,
+    editProfileDescriptionInput,
+  ]);
   openModal(editProfileModal);
 });
 
@@ -137,10 +169,9 @@ function handleAddCardSubmit(evt) {
   };
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement); // test post
-  // console.log("Image URL:", newPostImageInput.value);
-  // console.log("Caption:", newPostCaptionInput.value);
   closeModal(newPostModal); // New post function
   evt.target.reset();
+  disableButton(cardSubmitBtn, settings);
 }
 
 function handleEditProfileSubmit(evt) {
