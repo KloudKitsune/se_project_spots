@@ -78,14 +78,14 @@
   opacity: 1;
 }
 
-.modal__close_type_preview {
+.modal__close-btn_type_preview {
   top: 0;
   right: -52.5px;
   background-image: url(../images/close-icon-white.svg);
   opacity: 1;
 }
 
-.modal__close_type_preview:hover {
+.modal__close-btn_type_preview:hover {
   opacity: 0.4;
 }
 

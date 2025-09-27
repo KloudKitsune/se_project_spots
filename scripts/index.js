@@ -117,7 +117,6 @@ function handleEscClose(evt) {
     const openModal = document.querySelector(".modal.modal_is-opened");
     if (openModal) {
       closeModal(openModal);
-      document.removeEventListener("keydown", handleEscClose);
     }
   }
 }
@@ -130,7 +129,7 @@ function openModal(modal) {
 
 function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
-  document.addEventListener("keydown", handleEscClose);
+  document.removeEventListener("keydown", handleEscClose);
 }
 
 editProfileBtn.addEventListener("click", function () {
