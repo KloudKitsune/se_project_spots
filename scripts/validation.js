@@ -7,11 +7,11 @@ const settings = {
   errorClass: "modal__error",
 };
 
-const showInputError = (formEl, inputElement, errorMsg, settings) => {
+const showInputError = (formEl, inputElement, errorMsg, config) => {
   const errorMsgEl = formEl.querySelector(`#${inputElement.id}-error`);
   errorMsgEl.textContent = errorMsg;
   errorMsgEl.classList.add(config.errorClass);
-  inputElement.classList.add(settings.inputErrorClass);
+  inputElement.classList.add(config.inputErrorClass);
 };
 
 const hideInputError = (formEl, inputElement, config) => {
@@ -21,11 +21,16 @@ const hideInputError = (formEl, inputElement, config) => {
   inputElement.classList.remove(config.inputErrorClass);
 };
 
-const checkInputValidity = (formEl, inputElement) => {
+const checkInputValidity = (formEl, inputElement, config) => {
   if (!inputElement.validity.valid) {
-    showInputError(formEl, inputElement, inputElement.validationMessage);
+    showInputError(
+      formEl,
+      inputElement,
+      inputElement.validationMessage,
+      config
+    );
   } else {
-    hideInputError(formEl, inputElement);
+    hideInputError(formEl, inputElement, config);
   }
 };
 
@@ -35,7 +40,7 @@ const hasInvalidInput = (inputList) => {
   });
 };
 
-const toggleButtonState = (inputList, buttonElement, settings) => {
+const toggleButtonState = (inputList, buttonElement, config) => {
   if (hasInvalidInput(inputList)) {
     disableButton(buttonElement, config);
   } else {
@@ -44,15 +49,15 @@ const toggleButtonState = (inputList, buttonElement, settings) => {
   }
 };
 
-const disableButton = (buttonElement, settings) => {
+const disableButton = (buttonElement, config) => {
   buttonElement.classList.add(config.inactiveButtonClass);
   buttonElement.disabled = true;
 };
 
 //Optional reset of validation for Edit Profile
-const resetValidation = (formEl, inputList) => {
+const resetValidation = (formEl, inputList, config) => {
   inputList.forEach((input) => {
-    hideInputError(formEl, input);
+    hideInputError(formEl, input, config);
   });
 };
 

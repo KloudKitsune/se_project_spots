@@ -137,10 +137,11 @@ editProfileBtn.addEventListener("click", function () {
   editProfileDescriptionInput.value = profileDescriptionEl.textContent;
 
   // Optional reset of validation for Edit Profile line 41 on validation.js
-  resetValidation(editProfileForm, [
-    editProfileNameInput,
-    editProfileDescriptionInput,
-  ]);
+  resetValidation(
+    editProfileForm,
+    [editProfileNameInput, editProfileDescriptionInput],
+    settings
+  );
   openModal(editProfileModal);
 });
 
