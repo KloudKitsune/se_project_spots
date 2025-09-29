@@ -9,6 +9,7 @@ An image sharing site.
 - HTML
 - CSS
 - Responsive Design
+- Javascript
 
 ## Deployment
 
