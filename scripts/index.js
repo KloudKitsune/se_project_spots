@@ -1,3 +1,10 @@
+import {
+  enableValidation,
+  settings,
+  resetValidation,
+  disableButton,
+} from "./validation.js";
+
 const initialCards = [
   {
     name: "Golden Gate Bridge",
@@ -187,6 +194,6 @@ newPostForm.addEventListener("submit", handleAddCardSubmit); // new post event l
 initialCards.forEach(function (item) {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
-  // console.log(item.name);
-  // console.log(item.link);
 });
+
+enableValidation(settings);
