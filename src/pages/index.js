@@ -44,32 +44,12 @@ import {
 //   },
 // ];
 
-//API configuration
-const api = new Api({
-  baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  headers: {
-    authorization: "0669104a-2081-4194-9487-a1a2b010f799",
-    "Content-Type": "application/json",
-  },
-});
-
-api
-  .getAppInfo()
-  .then(([cards]) => {
-    cards.forEach(function (item) {
-      const cardElement = getCardElement(item);
-      cardsList.append(cardElement);
-    });
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-
 //Profile Elements
 const editProfileBtn = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const editProfileCloseBtn = editProfileModal.querySelector(".modal__close-btn");
 const editProfileForm = editProfileModal.querySelector(".modal__form");
+const profileAvatarEl = document.querySelector(".profile__avatar");
 
 const editProfileNameInput = editProfileModal.querySelector(
   "#profile-name-input"
@@ -129,6 +109,35 @@ function getCardElement(data) {
 
   return cardElement;
 }
+
+//API configuration
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "0669104a-2081-4194-9487-a1a2b010f799",
+    "Content-Type": "application/json",
+  },
+});
+
+api
+  .getAppInfo()
+  .then(([cards]) => {
+    //Could add data to the first parameter
+    //Setup user info on the page
+
+    // console.log(cards);
+    // profileNameEl.textContent = data.name;
+    // profileDescriptionEl.textContent = data.about;
+    // profileAvatarEl.src = data.avatar;
+
+    cards.forEach(function (item) {
+      const cardElement = getCardElement(item);
+      cardsList.append(cardElement);
+    });
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 // Close modal when clicking on the overlay
 const allModals = document.querySelectorAll(".modal");
@@ -206,9 +215,18 @@ function handleAddCardSubmit(evt) {
 
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
-  profileNameEl.textContent = editProfileNameInput.value;
-  profileDescriptionEl.textContent = editProfileDescriptionInput.value;
-  closeModal(editProfileModal);
+  api
+    .editUserInfo({
+      name: editProfileNameInput.value,
+      about: editProfileDescriptionInput.value,
+    })
+    .then((data) => {
+      profileNameEl.textContent = data.name;
+      profileDescriptionEl.textContent = data.about;
+      // profileAvatarEl = data.avatar;
+      closeModal(editProfileModal);
+    })
+    .catch(console.error);
 }
 
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
