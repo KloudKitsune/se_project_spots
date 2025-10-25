@@ -53,12 +53,17 @@ const api = new Api({
   },
 });
 
-api.getInitialCards().then((cards) => {
-  cards.forEach(function (item) {
-    const cardElement = getCardElement(item);
-    cardsList.append(cardElement);
+api
+  .getInitialCards()
+  .then((cards) => {
+    cards.forEach(function (item) {
+      const cardElement = getCardElement(item);
+      cardsList.append(cardElement);
+    });
+  })
+  .catch((err) => {
+    console.error(err);
   });
-});
 
 //Profile Elements
 const editProfileBtn = document.querySelector(".profile__edit-btn");

@@ -1,13 +1,13 @@
 class Api {
-  constructor(options) {
+  constructor({ baseUrl, headers }) {
+    this._baseUrl = baseUrl;
+    this._headers = headers;
     // constuctor body
   }
 
   getInitialCards() {
-    return fetch("https://around-api.en.tripleten-services.com/v1/cards", {
-      headers: {
-        authorization: "0669104a-2081-4194-9487-a1a2b010f799",
-      },
+    return fetch(`${this._baseUrl}/cards`, {
+      headers: this._headers,
     }).then((res) => res.json());
   }
 
