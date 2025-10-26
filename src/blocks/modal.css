@@ -216,6 +216,40 @@
   opacity: 0.5;
 }
 
+.delete__form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.modal__delete-btn {
+  background-color: rgba(255, 101, 101, 1);
+  width: 156px;
+  height: 52px;
+  border: none;
+  margin-right: 20px;
+  color: rgba(33, 33, 33, 1);
+}
+
+.modal__delete-btn:hover {
+  background-color: rgba(255, 51, 51, 1);
+}
+
+.modal__cancel-btn {
+  width: 156px;
+  height: 52px;
+  border-radius: 8px;
+  border: solid 1px rgba(33, 33, 33, 1);
+
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0px;
+}
+
 @media screen and (max-width: 627px) {
   .modal__container {
     margin: 0 10px;
