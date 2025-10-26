@@ -20,67 +20,55 @@ class Api {
     });
   }
 
-  // Create a card
-  postNewCard({ cards }) {
+  // Create a card DONE
+  createNewCard({ name, link }) {
     return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify({
-        cards,
+        name,
+        link,
       }),
     }).then((res) => {
       if (res.ok) {
-        // console.log("working");
         return res.json();
       }
       return Promise.reject(`Error: ${res.status}`);
     });
   }
-  // Delete a card
-  deleteCard({ cards }) {
-    return fetch(`${this._baseUrl}/cards:cardId`, {
+  // Delete a card DONE
+  deleteCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
-      body: JSON.stringify({
-        cards,
-      }),
     }).then((res) => {
       if (res.ok) {
-        // console.log("working");
         return res.json();
       }
       return Promise.reject(`Error: ${res.status}`);
     });
   }
 
-  // Like a card
-  likeCard({ cards }) {
-    return fetch(`${this._baseUrl}/cards/likes`, {
+  // Like a card DONE
+  likeCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: this._headers,
-      body: JSON.stringify({
-        cards,
-      }),
     }).then((res) => {
       if (res.ok) {
-        console.log("working");
         return res.json();
       }
       return Promise.reject(`Error: ${res.status}`);
     });
   }
 
-  //Dislike a card
-  dislikeCard({ cards }) {
-    return fetch(`${this._baseUrl}/cards/likes`, {
+  //Dislike a card DONE
+  dislikeCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: this._headers,
-      body: JSON.stringify({
-        cards,
-      }),
     }).then((res) => {
       if (res.ok) {
-        console.log("working");
         return res.json();
       }
       return Promise.reject(`Error: ${res.status}`);
@@ -131,8 +119,6 @@ class Api {
       return Promise.reject(`Error: ${res.status}`);
     });
   }
-  //create another method, getUserInfo (different base URL)
-  //other methods for working with API
 }
 
 export default Api;

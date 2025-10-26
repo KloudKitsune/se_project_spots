@@ -85,19 +85,40 @@ function getCardElement(data) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardTitleEl = cardElement.querySelector(".card__title");
   const cardImageEl = cardElement.querySelector(".card__image");
+  const cardLikeBtnEl = cardElement.querySelector(".card__like-btn");
+  const cardDeleteBtnEl = cardElement.querySelector(".card__delete-btn");
 
   cardImageEl.src = data.link;
   cardImageEl.alt = data.name;
   cardTitleEl.textContent = data.name;
 
-  const cardLikeBtnEl = cardElement.querySelector(".card__like-btn");
+  // Like and Dislike API logic using contains instead of toggle
   cardLikeBtnEl.addEventListener("click", () => {
-    cardLikeBtnEl.classList.toggle("card__like-btn_active");
+    if (cardLikeBtnEl.classList.contains("card__like-btn_active")) {
+      api
+        .dislikeCard(data._id)
+        .then(() => {
+          cardLikeBtnEl.classList.remove("card__like-btn_active");
+        })
+        .catch((err) => console.error("Error unliking card:", err));
+    } else {
+      api
+        .likeCard(data._id)
+        .then(() => {
+          cardLikeBtnEl.classList.add("card__like-btn_active");
+        })
+        .catch((err) => console.error("Error liking card:", err));
+    }
   });
 
-  const cardDeleteBtnEl = cardElement.querySelector(".card__delete-btn");
+  // Delete a card w/ API
   cardDeleteBtnEl.addEventListener("click", () => {
-    cardDeleteBtnEl.closest(".card").remove();
+    api
+      .deleteCard(data._id)
+      .then(() => {
+        cardElement.remove();
+      })
+      .catch((err) => console.error("Delete error:", err));
   });
 
   cardImageEl.addEventListener("click", () => {
@@ -121,13 +142,13 @@ const api = new Api({
 
 api
   .getAppInfo()
-  .then(([cards]) => {
+  .then(([cards, data]) => {
     //Could add data to the first parameter
     //Setup user info on the page
 
-    // console.log(cards);
-    // profileNameEl.textContent = data.name;
-    // profileDescriptionEl.textContent = data.about;
+    console.log(data);
+    profileNameEl.textContent = data.name;
+    profileDescriptionEl.textContent = data.about;
     // profileAvatarEl.src = data.avatar;
 
     cards.forEach(function (item) {
@@ -200,12 +221,32 @@ newPostCloseBtn.addEventListener("click", function () {
   closeModal(newPostModal);
 });
 
+// Adding a card to the DOM via API
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-  const inputValues = {
-    name: newPostCaptionInput.value, //test post
-    link: newPostImageInput.value, // test post
-  };
+  api
+    .createNewCard({
+      name: newPostCaptionInput.value, //API create Card
+      link: newPostImageInput.value,
+    })
+    .then((data) => {
+      const cardElement = getCardElement(data);
+      cardsList.prepend(cardElement);
+
+      closeModal(newPostModal);
+      evt.target.reset();
+    })
+    .catch((err) => {
+      console.error("Error creating card:", err);
+    })
+    .finally(() => {
+      cardSubmitBtn.disabled = false;
+    });
+
+  // const inputValues = {
+  //   name: newPostCaptionInput.value, //test post
+  //   link: newPostImageInput.value, // test post
+  // };
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement); // test post
   closeModal(newPostModal);
