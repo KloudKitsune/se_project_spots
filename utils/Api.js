@@ -50,7 +50,7 @@ class Api {
   }
 
   // Like a card DONE
-  likeCard(cardId) {
+  addLike(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: this._headers,
@@ -62,8 +62,8 @@ class Api {
     });
   }
 
-  //Dislike a card DONE
-  dislikeCard(cardId) {
+  //Remove liking a card DONE
+  removeLike(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "DELETE",
       headers: this._headers,
