@@ -6,6 +6,7 @@ import {
   resetValidation,
   disableButton,
 } from "../scripts/validation.js";
+import { setButtonText } from "../../utils/helpers.js";
 
 //Profile Elements
 const editProfileBtn = document.querySelector(".profile__edit-btn");
@@ -39,6 +40,8 @@ deleteCancelBtn.addEventListener("click", () => closeModal(deleteModal));
 // Delete Form Submit Handler
 deleteForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
+  const btn = evt.submitter;
+  btn.textContent = "Deleting...";
 
   if (!selectedCard || !selectedCardId) return;
 
@@ -50,7 +53,10 @@ deleteForm.addEventListener("submit", (evt) => {
       selectedCard = null;
       selectedCardId = null;
     })
-    .catch((err) => console.error("Delete error:", err));
+    .catch((err) => console.error("Delete error:", err))
+    .finally(() => {
+      btn.textContent = "Delete";
+    });
 });
 
 // Avatar form Elements
@@ -234,6 +240,8 @@ newPostCloseBtn.addEventListener("click", function () {
 // Adding a card to the DOM via API
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
+  const btn = evt.submitter;
+  setButtonText(btn, true);
 
   cardSubmitBtn.disabled = true;
 
@@ -255,6 +263,7 @@ function handleAddCardSubmit(evt) {
       console.error("Error creating card:", err);
     })
     .finally(() => {
+      setButtonText(btn, false);
       cardSubmitBtn.disabled = false;
     });
 }
@@ -262,10 +271,11 @@ function handleAddCardSubmit(evt) {
 // Avatar Edit function
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
+  const btn = evt.submitter;
+  setButtonText(btn, true);
+
   api
-    .editAvatarInfo({
-      avatar: avatarInput.value,
-    })
+    .editAvatarInfo({ avatar: avatarInput.value })
     .then((data) => {
       profileAvatarEl.src = data.avatar;
       closeModal(avatarModal);
@@ -273,11 +283,15 @@ function handleAvatarSubmit(evt) {
     })
     .catch((err) => {
       console.error("Error updating avatar:", err);
-    });
+    })
+    .finally(() => setButtonText(btn, false));
 }
 
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
+  const btn = evt.submitter;
+  setButtonText(btn, true);
+
   api
     .editUserInfo({
       name: editProfileNameInput.value,
@@ -286,10 +300,11 @@ function handleEditProfileSubmit(evt) {
     .then((data) => {
       profileNameEl.textContent = data.name;
       profileDescriptionEl.textContent = data.about;
-      profileAvatarEl = data.avatar;
+      // profileAvatarEl = data.avatar;
       closeModal(editProfileModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => setButtonText(btn, false));
 }
 
 avatarModalBtn.addEventListener("click", () => {
