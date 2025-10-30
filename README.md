@@ -4,7 +4,7 @@
 
 
 This is an image sharing site that I have made. We have HTML and CSS for the site itself.
-The more interesting part is what I've done with JavaScript, initially I had created functions to handle liking image status, adding an image to the DOM, editing profile information, and opening and closing modals. I have sense updated this to use REST API's to run functions and send information to a server using Webpack and NPM to manage the server and fetch requests.
+The more interesting part is what I've done with JavaScript; initially I had created functions to handle image like status', adding an image to the DOM, editing profile information, and opening and closing modals. I have updated this to use REST API's to send information to a server using NPM to manage package dependencies and Webpack for bundling.
 
 ## Description
 
