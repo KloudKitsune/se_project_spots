@@ -1,12 +1,12 @@
 import "./index.css";
-import Api from "../../utils/Api.js";
+import Api from "../utils/Api.js";
 import {
   enableValidation,
   settings,
   resetValidation,
   disableButton,
 } from "../scripts/validation.js";
-import { setButtonText } from "../../utils/helpers.js";
+import { setButtonText } from "../utils/helpers.js";
 
 //Profile Elements
 const editProfileBtn = document.querySelector(".profile__edit-btn");
