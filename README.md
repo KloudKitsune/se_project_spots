@@ -29,6 +29,3 @@ This wepage is deployed to Github Pages
 - [Video overview of project]
 
 https://drive.google.com/file/d/1j9qRSXdJtjhwmb3BI6eoSBzEUfewhehw/view?usp=sharing
-
-![Uploading image.png…]()
-
