@@ -1,6 +1,7 @@
 # Spots
 
-An image sharing site.
+This is an image sharing site that I have made. We have HTML and CSS for the site itself.
+The more interesting part is what I've done with JavaScript, initially I had created functions to handle liking image status, adding an image to the DOM, editing profile information, and opening and closing modals. I have sense updated this to use REST API's to run functions and send information to a server using Webpack and NPM to manage the server and fetch requests.
 
 ## Description
 
@@ -10,6 +11,9 @@ An image sharing site.
 - CSS
 - Responsive Design
 - Javascript
+- Rest API's for communication to the server
+- Webpack
+- NPM
 
 ## Deployment
 

@@ -99,6 +99,16 @@
   letter-spacing: 0px;
 }
 
+.modal__title_type_delete {
+  margin: 0 0 32px;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 0px;
+}
+
 .modal__caption {
   margin: 0;
   top: calc(100% + 10px);
@@ -216,10 +226,78 @@
   opacity: 0.5;
 }
 
+.delete__form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.modal__delete-btn {
+  background-color: rgba(255, 101, 101, 1);
+  width: 156px;
+  height: 52px;
+  border: none;
+  margin-right: 20px;
+  color: rgba(33, 33, 33, 1);
+  cursor: pointer;
+  border-radius: 8px;
+
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0px;
+}
+
+.modal__delete-btn:hover {
+  background-color: rgba(255, 51, 51, 1);
+}
+
+.modal__cancel-btn {
+  width: 156px;
+  height: 52px;
+  border-radius: 8px;
+  border: solid 1px rgba(33, 33, 33, 1);
+
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 0px;
+}
+
+.modal__cancel-btn:hover {
+  background-color: rgba(33, 33, 33, 1);
+  color: #fff;
+}
+
 @media screen and (max-width: 627px) {
+  .modal {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
   .modal__container {
     margin: 0 10px;
     padding: 22px 12px 12px;
+  }
+
+  .delete__form {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal__container .modal__close-btn_type_preview {
+    position: absolute;
+    top: -74px;
+  }
+
+  .modal__delete-btn {
+    margin-right: 0;
   }
 
   .modal__title {
@@ -239,6 +317,11 @@
   .modal__close-btn {
     top: 12px;
     right: 12px;
+  }
+
+  .modal__close-btn_type_delete {
+    background-image: url(../images/close-icon-white.svg);
+    opacity: 1;
   }
 
   .modal__close_type_preview {
